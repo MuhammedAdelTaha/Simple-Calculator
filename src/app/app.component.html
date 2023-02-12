@@ -1,0 +1,42 @@
+<body>
+    <div class="container">
+        <div id="header">
+            <p id ="line1"></p>
+            <p id ="line2">{{ previousSign }}{{ previous }}</p>
+            <p id ="line3">{{ operation }}</p>
+            <p id ="line4">{{ currentSign }}{{ current }}</p>
+        </div>
+    
+        <div class = "button-container">
+            <button class="btn first-row" (click)="percentage()">%</button>
+            <button class="btn" (click)="reset()">CE</button>
+            <button class="btn" (click)="reset()">C</button>
+            <button class="btn backspace" (click)="backSpace()"> ⌫ </button>
+    
+            <button class="btn first-row" (click)="inverse()">1/x</button>
+            <button class="btn first-row" (click)="square()">x<sup><small>2</small></sup></button>
+            <button class="btn first-row" (click)="squareRoot()"><sup><small>2</small></sup>√</button>
+            <button class="btn blue" (click)="insertOperation('÷')"> ÷ </button>
+    
+            <button class="btn white" (click)="insertNumber('7')">7</button>
+            <button class="btn white" (click)="insertNumber('8')">8</button>
+            <button class="btn white" (click)="insertNumber('9')">9</button>
+            <button class="btn blue" (click)="insertOperation('x')"> x </button>
+            
+            <button class="btn white" (click)="insertNumber('4')">4</button>
+            <button class="btn white" (click)="insertNumber('5')">5</button>
+            <button class="btn white" (click)="insertNumber('6')">6</button>
+            <button class="btn blue" (click)="insertOperation('-')"> - </button>
+            
+            <button class="btn white" (click)="insertNumber('1')">1</button>
+            <button class="btn white" (click)="insertNumber('2')">2</button>
+            <button class="btn white" (click)="insertNumber('3')">3</button>
+            <button class="btn blue" (click)="insertOperation('+')"> + </button>
+            
+            <button class ="btn plus-minus" (click)="changeSign()">±</button>
+            <button class="btn white" (click)="insertNumber('0')">0</button>
+            <button class="btn" id="dot" (click)="insertNumber('.')"><strong>.</strong></button>
+            <button class="btn blue" (click)="calculate()"> = </button>
+        </div>
+    </div>
+</body>
