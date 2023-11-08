@@ -10,12 +10,12 @@ export class AppComponent {
 
   title = 'simple_calculator';
 
-  //for the first number and the second number to be caculated.
+  //for the first number and the second number to be calculated.
   firstNumber : any = 0;//the previous string after parsing.
   secondNumber : any = 0;//the current string after parsing.
   result : any = 0;//the result of the firstNumber and the secondNumber after doing an operation on them.
 
-  //for the previous number and the current number propreties such as sign and value.
+  //for the previous number and the current number properties such as sign and value.
   public previousSign = "";//the previous number sign (+ve or -ve).
   public previous = "";//the previous number value.
   public currentSign = "";//the current number sign (+ve or -ve).
@@ -25,19 +25,19 @@ export class AppComponent {
   public operation = "";//the operation (/ , * , + , -)
   public operationFlag = false; //check if we added an operation
 
-  private setPreviousPropreties(previousSign : string, previous : string){
+  private setPreviousProperties(previousSign : string, previous : string){
     this.previousSign = previousSign;
     this.previous = previous;
   }
 
-  private setCurrentPropreties(currentSign : string, current : string, currentDotFlag : boolean, currentDigitsFlag : boolean){
+  private setCurrentProperties(currentSign : string, current : string, currentDotFlag : boolean, currentDigitsFlag : boolean){
     this.currentSign = currentSign;
     this.current = current;
     this.currentDotFlag = currentDotFlag;
     this.currentDigitsFlag = currentDigitsFlag;
   }
 
-  private setOperationPropreties(operation : string, operationFlag : boolean){
+  private setOperationProperties(operation : string, operationFlag : boolean){
     this.operation = operation;
     this.operationFlag = operationFlag;
   }
@@ -50,8 +50,8 @@ export class AppComponent {
   }
 
   insertNumber(number: string) {
-    if(!(this.currentDigitsFlag == false && number == '0') && !(this.currentDotFlag == true && number == '.')){
-      if(this.currentDigitsFlag == false && number != '.'){
+    if(!(!this.currentDigitsFlag && number == '0') && !(this.currentDotFlag && number == '.')){
+      if(!this.currentDigitsFlag && number != '.'){
         this.current = number;
       }
       else{
@@ -64,9 +64,9 @@ export class AppComponent {
 
   insertOperation(operation: string) {
     if(!this.operationFlag){
-      this.setPreviousPropreties(this.currentSign, this.current);
-      this.setCurrentPropreties("", "0", false, false);
-      this.setOperationPropreties(operation, true);
+      this.setPreviousProperties(this.currentSign, this.current);
+      this.setCurrentProperties("", "0", false, false);
+      this.setOperationProperties(operation, true);
     }
   }
 
@@ -129,7 +129,7 @@ export class AppComponent {
       if(this.currentSign == "- "){
         this.secondNumber *= -1.0;
       }
-  
+
       if(this.operation == "+"){
         this.result = this.firstNumber + this.secondNumber;
       }
@@ -159,7 +159,7 @@ export class AppComponent {
 
   backSpace() {
     if(this.current.length == 1){
-      this.setCurrentPropreties(this.currentSign, "0", false, false);
+      this.setCurrentProperties(this.currentSign, "0", false, false);
     }
     else if(this.current.length > 1){
       if(this.current[this.current.length - 1] == "."){
@@ -170,9 +170,9 @@ export class AppComponent {
   }
 
   reset() {
-    this.setPreviousPropreties("", "");
-    this.setCurrentPropreties("", "0", false, false);
-    this.setOperationPropreties("", false);
+    this.setPreviousProperties("", "");
+    this.setCurrentProperties("", "0", false, false);
+    this.setOperationProperties("", false);
   }
 
 }
