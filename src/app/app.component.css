@@ -43,6 +43,7 @@ body {
 }
 
 .calculator .calculator-body td {
+  width: calc(400px / 4);
   font-weight: bold;
   font-size: 20px;
   border: #ededed solid 1px;
