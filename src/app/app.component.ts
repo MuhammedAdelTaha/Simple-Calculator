@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -47,6 +47,49 @@ export class AppComponent {
       value *= -1.0;
     }
     return value;
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    const event_key = event.key;
+    const operations = ['+', '-', '*', '/']
+
+    console.log(event_key)
+    if (event_key >= '0' && event_key <= '9' || event_key == '.') {
+      this.insertNumber(event_key);
+    }
+    else if (operations.includes(event_key)) {
+      this.insertOperation(event_key);
+    }
+    else if (event_key == '%'){
+      this.percentage();
+    }
+    //i: stands for inverse
+    else if (event_key == 'i'){
+      this.inverse();
+    }
+    //^: stands for square
+    else if (event_key == '^'){
+      this.square();
+    }
+    //s: stands for square root
+    else if (event_key == 's'){
+      this.squareRoot();
+    }
+    //c: stands for change sign
+    else if (event_key == 'c'){
+      this.changeSign();
+    }
+    //r: stands for reset
+    else if (event_key == 'r'){
+      this.reset();
+    }
+    else if (event_key == 'Backspace' || event_key == 'Delete'){
+      this.backSpace();
+    }
+    else if (event_key == 'Enter' || event_key == '=') {
+      this.calculate();
+    }
   }
 
   insertNumber(number: string) {
@@ -136,10 +179,10 @@ export class AppComponent {
       else if(this.operation == "-"){
         this.result = this.firstNumber - this.secondNumber;
       }
-      else if(this.operation == "x"){
+      else if(this.operation == "*"){
         this.result = this.firstNumber * this.secondNumber;
       }
-      else if(this.operation == "÷"){
+      else if(this.operation == "/"){
         this.result = this.firstNumber / this.secondNumber;
       }
 
